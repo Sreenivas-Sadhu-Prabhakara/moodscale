@@ -223,10 +223,10 @@
 
     show($('result'));
     $('resultHeading').setAttribute('tabindex', '-1');
-    $('resultHeading').focus();
-    if (!$('crisisModal').hidden) {
-      // if crisis modal open, keep focus there; result stays below
-    } else {
+    // If the crisis panel is open it owns focus (unskippable, trapped) — do NOT
+    // steal it to the result heading, and do not scroll the result into view.
+    if ($('crisisModal').hidden) {
+      $('resultHeading').focus();
       $('result').scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth', block: 'start' });
     }
   }
@@ -384,17 +384,15 @@
   }
 
   function downloadText(text, name, mime) {
-    // data: URL download — no network, satisfies CSP img/default-src 'self'
-    // (anchor download of a blob/data URL is a same-doc navigation, allowed)
-    var blob = new Blob([text], { type: mime + ';charset=utf-8' });
-    var url = URL.createObjectURL(blob);
+    // Download via a data: URL. Under this page's strict CSP (default-src 'self',
+    // no blob: in any directive) a blob: object URL can be refused; a data: URL on
+    // an <a download> triggers a save with no network and no CSP violation.
     var a = el('a');
-    a.href = url;
+    a.href = 'data:' + mime + ';charset=utf-8,' + encodeURIComponent(text);
     a.download = name;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
   }
 
   /* ---------- print (build per-item detail then print) ---------- */
