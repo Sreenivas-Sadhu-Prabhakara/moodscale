@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'">
+  <title>moodscale — PHQ-9 & GAD-7 test online, scored privately on your device</title>
+  <meta name="description" content="Take the public-domain PHQ-9 and GAD-7 privately in your browser. Get the exact published score and severity band, track it over time, and print a clean sheet for your clinician. Your answers never touch a server.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="canonical" href="https://sreenivas-sadhu-prabhakara.github.io/moodscale/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Sreenivas Sadhu Prabhakara">
+  <meta name="keywords" content="PHQ-9 test online, GAD-7 self test, depression screening, anxiety screening, PHQ-9 score, GAD-7 score, mental health self test, private depression test, offline PHQ-9, clinician score sheet">
+  <meta name="theme-color" content="#181210" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F4EFE6" media="(prefers-color-scheme: light)">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="moodscale">
+  <meta property="og:title" content="moodscale — PHQ-9 & GAD-7, scored privately on your device">
+  <meta property="og:description" content="Take the public-domain PHQ-9 and GAD-7 privately. Exact published score and band, tracked over time, printable for your clinician. Answers never leave your browser.">
+  <meta property="og:url" content="https://sreenivas-sadhu-prabhakara.github.io/moodscale/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://sreenivas-sadhu-prabhakara.github.io/moodscale/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="moodscale — a graduated severity band with a single oxblood score marker">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="moodscale — PHQ-9 & GAD-7, scored privately on your device">
+  <meta name="twitter:description" content="Take the public-domain PHQ-9 and GAD-7 privately. Exact published score and band, tracked over time, printable for your clinician.">
+  <meta name="twitter:image" content="https://sreenivas-sadhu-prabhakara.github.io/moodscale/og-image.png">
+  <meta name="twitter:image:alt" content="moodscale — a graduated severity band with a single oxblood score marker">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <!-- Structured data (data block; not affected by script-src) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "moodscale",
+    "description": "A private, offline PHQ-9 and GAD-7 self-test that gives the exact published score and severity band, tracks scores over time, and prints a clinician-ready sheet. All computation happens on your device; nothing is transmitted.",
+    "url": "https://sreenivas-sadhu-prabhakara.github.io/moodscale/",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "Any (modern web browser)",
+    "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "license": "https://opensource.org/licenses/MIT",
+    "author": { "@type": "Person", "name": "Sreenivas Sadhu Prabhakara" },
+    "softwareVersion": "0.1.0",
+    "featureList": [
+      "PHQ-9 depression self-test with verbatim published wording",
+      "GAD-7 anxiety self-test with verbatim published wording",
+      "Exact published score and severity band, cited to the source paper",
+      "Score history and trend chart tracked on your device",
+      "Clinician-ready printable sheet and CSV export",
+      "Verified crisis helpline directory",
+      "Runs 100% offline; no network, no accounts, no tracking"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does moodscale send my answers anywhere?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The page's own Content-Security-Policy sets connect-src to none, so the browser itself blocks every network request. Your answers, scores and history are computed and stored only in this browser's local storage. Clearing site data deletes them."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is a PHQ-9 or GAD-7 score a diagnosis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The PHQ-9 and GAD-7 are screening questionnaires, not diagnostic tests. moodscale shows only the total and the published severity band label, with a citation. Only a qualified clinician can diagnose depression or anxiety."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do the PHQ-9 severity bands mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The published PHQ-9 bands are 0-4 minimal, 5-9 mild, 10-14 moderate, 15-19 moderately severe, and 20-27 severe (Kroenke, Spitzer & Williams, 2001). moodscale reproduces these labels exactly and adds no interpretation of its own."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the PHQ-9 and GAD-7 free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Both instruments are public domain. The PHQ-9 states 'No permission required to reproduce, translate, display or distribute' and the GAD-7 is 'available in the public domain'. moodscale reproduces the item wording unchanged and cites the developers."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the self-test</a>
+
+  <!-- persistent crisis access -->
+  <div class="crisisbar">
+    <div class="crisisbar__inner">
+      <span class="wordmark" aria-hidden="true">
+        <span class="wordmark__ruler"></span>moodscale
+      </span>
+      <button type="button" class="needhelp" id="needHelpTop" aria-haspopup="dialog">
+        <span class="needhelp__dot" aria-hidden="true"></span>Need help now?
+      </button>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="hero__inner">
+      <p class="eyebrow">PHQ-9 &amp; GAD-7 &middot; public-domain instruments &middot; offline</p>
+      <h1 class="hero__title">PHQ-9 &amp; GAD-7 Self-Test<span class="hero__sub"> — Scored Privately on Your Device</span></h1>
+      <p class="hero__lede">
+        Take the validated, public-domain depression (PHQ-9) and anxiety (GAD-7) questionnaires
+        in your browser. You get the <em>exact published score and severity band</em> — nothing more,
+        no advice, no interpretation — and you can track it over time and print a clean sheet for
+        your clinician. Your answers never leave this device.
+      </p>
+
+      <div class="pickers" role="group" aria-label="Choose a questionnaire">
+        <button type="button" class="pick" id="startPHQ9">
+          <span class="pick__name">PHQ-9</span>
+          <span class="pick__desc">Depression &middot; 9 questions</span>
+        </button>
+        <button type="button" class="pick" id="startGAD7">
+          <span class="pick__name">GAD-7</span>
+          <span class="pick__desc">Anxiety &middot; 7 questions</span>
+        </button>
+      </div>
+
+      <p class="hero__nudge" id="lastNudge" aria-live="polite" hidden></p>
+
+      <div class="privacy" role="note">
+        <p><strong>Private by construction.</strong> This page's security policy sets
+        <code>connect-src 'none'</code>, so the browser itself <em>blocks</em> any attempt to send data
+        anywhere. Everything is computed and stored only here.
+        <button type="button" class="linkbtn" id="deleteAll">Delete all my data</button></p>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== QUESTIONNAIRE ===== -->
+    <section class="quiz" id="quiz" aria-labelledby="quizHeading" hidden>
+      <div class="quiz__inner">
+        <div class="quiz__head">
+          <h2 id="quizHeading" class="quiz__title"></h2>
+          <p class="quiz__stem" id="quizStem"></p>
+        </div>
+        <form id="quizForm" novalidate>
+          <ol class="items" id="items"></ol>
+
+          <fieldset class="followup" id="followup">
+            <legend class="followup__legend">One more question <span class="tag">not part of the score</span></legend>
+            <p class="followup__text" id="followupText"></p>
+            <div class="opts" id="followupOpts" role="radiogroup" aria-label="Functional impact (not scored)"></div>
+          </fieldset>
+
+          <div class="quiz__actions">
+            <button type="submit" class="btn btn--primary" id="scoreBtn">See my score</button>
+            <button type="button" class="btn btn--ghost" id="cancelQuiz">Cancel</button>
+            <p class="quiz__note" id="quizProgress" aria-live="polite"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== RESULT ===== -->
+    <section class="result" id="result" aria-labelledby="resultHeading" hidden>
+      <div class="result__inner">
+        <h2 id="resultHeading" class="result__heading"></h2>
+
+        <div class="scorecard">
+          <div class="scorecard__num">
+            <span class="scorecard__total" id="resultTotal">0</span>
+            <span class="scorecard__max" id="resultMax">/ 27</span>
+          </div>
+          <div class="scorecard__band">
+            <span class="bandchip" id="resultBand"></span>
+            <span class="scorecard__cite" id="resultCite"></span>
+          </div>
+        </div>
+
+        <!-- the graduated band motif -->
+        <figure class="ruler" aria-labelledby="rulerCap">
+          <div class="ruler__track" id="rulerTrack" role="img"></div>
+          <figcaption class="ruler__cap" id="rulerCap"></figcaption>
+        </figure>
+
+        <p class="result__honest">
+          moodscale shows the published band label only — it gives no advice, interpretation,
+          or "what this means". A screening score is <strong>not a diagnosis</strong>; only a
+          qualified clinician can diagnose depression or anxiety.
+        </p>
+
+        <div class="result__actions">
+          <button type="button" class="btn btn--ghost" id="printResult">Print for my clinician</button>
+          <button type="button" class="btn btn--ghost" id="exportCsv">Export history (CSV)</button>
+          <button type="button" class="btn btn--ghost" id="retake">Take again</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HISTORY / TREND ===== -->
+    <section class="history" id="history" aria-labelledby="historyHeading" hidden>
+      <div class="history__inner">
+        <div class="history__head">
+          <h2 id="historyHeading">Your history</h2>
+          <div class="history__tabs" role="tablist" aria-label="History scale">
+            <button type="button" class="htab" id="tabPHQ9" role="tab" aria-selected="true">PHQ-9</button>
+            <button type="button" class="htab" id="tabGAD7" role="tab" aria-selected="false">GAD-7</button>
+          </div>
+        </div>
+        <figure class="trend" aria-labelledby="trendCap">
+          <div class="trend__chart" id="trendChart" role="img"></div>
+          <figcaption class="trend__cap" id="trendCap">
+            Raw scores over time. Score points carry measurement error — this is not a measure of
+            treatment response.
+          </figcaption>
+        </figure>
+        <div class="table-scroll">
+          <table class="htable" id="historyTable">
+            <thead>
+              <tr><th scope="col">Date</th><th scope="col">Scale</th><th scope="col">Score</th><th scope="col">Band</th><th scope="col"><span class="sr-only">Actions</span></th></tr>
+            </thead>
+            <tbody id="historyBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PRINT-ONLY per-item detail ===== -->
+    <section class="printdetail" id="printDetail" aria-hidden="true"></section>
+
+    <!-- ===== HELPLINES (directory) ===== -->
+    <section class="helplines" id="helplines" aria-labelledby="helpHeading">
+      <div class="helplines__inner">
+        <h2 id="helpHeading">Crisis &amp; support lines</h2>
+        <p class="helplines__note">
+          A <strong>directory of numbers, not live help.</strong> Numbers change — each is shown with the
+          date it was verified against an official source. If you are in immediate danger, call your
+          local emergency services.
+        </p>
+        <div class="helplines__filter">
+          <label for="countrySel">Show numbers for</label>
+          <select id="countrySel"></select>
+        </div>
+        <ul class="helplist" id="helpList"></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== CRISIS DIALOG ===== -->
+  <div class="modal" id="crisisModal" role="dialog" aria-modal="true" aria-labelledby="crisisTitle" hidden>
+    <div class="modal__backdrop" id="crisisBackdrop"></div>
+    <div class="modal__panel" role="document">
+      <h2 id="crisisTitle" class="modal__title">You don't have to handle this alone</h2>
+      <p class="modal__body" id="crisisBody">
+        Some of what you noted can be heavy to carry. Talking to someone can help right now.
+        These are free, confidential lines. If you are in immediate danger, please call your local
+        emergency services.
+      </p>
+      <ul class="modal__lines" id="crisisLines"></ul>
+      <p class="modal__meta">These numbers are a directory verified on the dates shown — not a live service.</p>
+      <div class="modal__actions">
+        <button type="button" class="btn btn--primary" id="crisisAck">I understand — continue</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <div class="foot__inner">
+      <p class="foot__disclaimer">
+        <strong>A screening tool, not a diagnosis.</strong> moodscale reproduces the public-domain
+        PHQ-9 and GAD-7 and shows only their published score and severity band — no advice, no
+        interpretation. It is not medical advice; only a qualified clinician can diagnose or treat
+        depression or anxiety. Instruments and helplines <strong>verified 2026-07-22</strong>.
+        Not a crisis service.
+      </p>
+      <p class="foot__meta">
+        <span>Works 100% offline</span><span class="foot__dot">&middot;</span>
+        <span>No network, no accounts</span><span class="foot__dot">&middot;</span>
+        <span>MIT&nbsp;License</span><span class="foot__dot">&middot;</span>
+        <span>&copy; 2026 Sreenivas&nbsp;Sadhu&nbsp;Prabhakara</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- data modules first (browser globals), then app -->
+  <script src="data/scales.js"></script>
+  <script src="data/helplines.js"></script>
+  <script src="data/engine.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --bg:      #181210;
+    --panel:   #221a17;
+    --ink:     #EDE6D8;
+    --soft:    #b6ab9a;
+    --accent:  #C97B85;
+    --hair:    #46372f;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    background:
+      radial-gradient(1100px 560px at 84% -14%, rgba(201,123,133,0.16), transparent 60%),
+      linear-gradient(180deg, #1c1512 0%, #181210 100%);
+    font-family: var(--sans);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    padding: 86px 90px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .brand { display: flex; align-items: center; gap: 20px; }
+  .brand svg { width: 74px; height: 74px; }
+  .wordmark { font-size: 60px; font-weight: 800; letter-spacing: -0.035em; }
+
+  .headline { max-width: 940px; }
+  .headline h1 { font-size: 62px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; }
+  .headline .accent { color: var(--accent); }
+  .headline p {
+    margin-top: 22px; font-size: 29px; font-weight: 500; color: var(--soft);
+    letter-spacing: -0.01em; max-width: 30ch; line-height: 1.34;
+  }
+
+  /* the graduated band as the hero */
+  .rulerwrap { display: flex; flex-direction: column; gap: 14px; }
+  .ruler { width: 100%; height: 74px; }
+  .chips { display: flex; gap: 12px; }
+  .chip {
+    font-size: 22px; font-weight: 700; color: var(--soft);
+    border: 1px solid var(--hair); border-radius: 999px; padding: 9px 18px;
+    background: rgba(34,26,23,0.5);
+  }
+</style>
+</head>
+<body>
+  <div class="brand">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <rect width="32" height="32" rx="7" fill="#221a17"/>
+      <rect x="5" y="14" width="22" height="4" rx="1" fill="#EDE6D8" opacity="0.28"/>
+      <g stroke="#EDE6D8" stroke-width="0.9" opacity="0.5">
+        <line x1="8" y1="12.5" x2="8" y2="19.5"/><line x1="12" y1="13.2" x2="12" y2="18.8"/>
+        <line x1="16" y1="13.2" x2="16" y2="18.8"/><line x1="20" y1="13.2" x2="20" y2="18.8"/>
+        <line x1="24" y1="12.5" x2="24" y2="19.5"/>
+      </g>
+      <line x1="19" y1="9" x2="19" y2="23" stroke="#C97B85" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="19" cy="16" r="2.6" fill="#C97B85"/>
+    </svg>
+    <span class="wordmark">moodscale</span>
+  </div>
+
+  <div class="headline">
+    <h1>PHQ-9 &amp; GAD-7,<br><span class="accent">scored privately on your device.</span></h1>
+    <p>The exact published score and band — no advice, no server, no account.</p>
+  </div>
+
+  <div class="rulerwrap">
+    <svg class="ruler" viewBox="0 0 1000 74" preserveAspectRatio="none" aria-hidden="true">
+      <!-- graduated segments: five bands, lightness ramp -->
+      <rect x="0"   y="20" width="185" height="34" fill="#C97B85" fill-opacity="0.14"/>
+      <rect x="185" y="20" width="185" height="34" fill="#C97B85" fill-opacity="0.28"/>
+      <rect x="370" y="20" width="185" height="34" fill="#C97B85" fill-opacity="0.42"/>
+      <rect x="555" y="20" width="185" height="34" fill="#C97B85" fill-opacity="0.56"/>
+      <rect x="740" y="20" width="260" height="34" fill="#C97B85" fill-opacity="0.72"/>
+      <!-- ticks -->
+      <g stroke="#b6ab9a" stroke-width="1">
+        <line x1="0" y1="16" x2="0" y2="58"/><line x1="185" y1="16" x2="185" y2="58"/>
+        <line x1="370" y1="16" x2="370" y2="58"/><line x1="555" y1="16" x2="555" y2="58"/>
+        <line x1="740" y1="16" x2="740" y2="58"/><line x1="1000" y1="16" x2="1000" y2="58"/>
+      </g>
+      <!-- single oxblood marker -->
+      <line x1="470" y1="6" x2="470" y2="68" stroke="#C97B85" stroke-width="5"/>
+      <circle cx="470" cy="37" r="10" fill="#C97B85" stroke="#181210" stroke-width="3"/>
+    </svg>
+    <div class="chips">
+      <span class="chip">public-domain instruments</span>
+      <span class="chip">tracked over time</span>
+      <span class="chip">100% offline</span>
+    </div>
+  </div>
+</body>
+</html>

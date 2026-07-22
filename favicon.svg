@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="moodscale">
+  <rect width="32" height="32" rx="7" fill="#181210"/>
+  <!-- short graduated band -->
+  <rect x="5" y="14" width="22" height="4" rx="1" fill="#EDE6D8" opacity="0.28"/>
+  <g stroke="#EDE6D8" stroke-width="0.9" opacity="0.5">
+    <line x1="8"  y1="12.5" x2="8"  y2="19.5"/>
+    <line x1="12" y1="13.2" x2="12" y2="18.8"/>
+    <line x1="16" y1="13.2" x2="16" y2="18.8"/>
+    <line x1="20" y1="13.2" x2="20" y2="18.8"/>
+    <line x1="24" y1="12.5" x2="24" y2="19.5"/>
+  </g>
+  <!-- single oxblood marker -->
+  <line x1="19" y1="9" x2="19" y2="23" stroke="#C97B85" stroke-width="2.2" stroke-linecap="round"/>
+  <circle cx="19" cy="16" r="2.6" fill="#C97B85"/>
+</svg>
